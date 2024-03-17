@@ -9,4 +9,9 @@ allPrices = soup.find_all("div", class_="s-item__detail s-item__detail--primary"
 for price in allPrices:
     priceSpan = price.find("span", class_="s-item__price")
     if priceSpan:
-        print(priceSpan.text)
+        priceMod = priceSpan.text[1:]
+        if "to" not in priceMod:
+            castedPrice = float(priceMod)
+            if castedPrice < 20.00:
+                print(f"${castedPrice}")
+        
